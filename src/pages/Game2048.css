@@ -1,0 +1,130 @@
+/* full overlay */
+.g2048-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg,#071226,#03121a);
+  color: #eef7ff;
+  -webkit-font-smoothing:antialiased;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* topbar */
+.g2048-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.g-back { background: rgba(255,255,255,0.04); border: none; color: #fff; padding:8px 10px; border-radius:10px; }
+.g-title { font-weight:700; font-size:18px; }
+.g-stats { display:flex; gap:10px; align-items:center; }
+.g-score, .g-best { text-align:center; font-size:12px; opacity:0.9; }
+
+/* board wrapper */
+.g-wrap {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap:14px;
+  flex: 1;
+  overflow: auto;
+}
+
+/* board */
+.g-board {
+  position: relative;
+  width: min(92vw, 420px);
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 16px;
+  padding: 14px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 12px;
+  box-shadow: 0 6px 20px rgba(2,8,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* background cells */
+.g-cell {
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.5);
+}
+
+/* tiles container (absolute inside the board) */
+.g-tiles {
+  position: absolute;
+  inset: 14px;
+  pointer-events: none; /* tiles shouldn't intercept touch; board handles swipes */
+}
+
+/* tile base */
+.tile {
+  position: absolute;
+  width: calc((100% - 3 * 12px) / 4);
+  height: calc((100% - 3 * 12px) / 4);
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), opacity 120ms ease;
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(2,8,23,0.6);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+.tile-inner {
+  font-weight:700;
+  font-size: 20px;
+}
+
+/* color mapping for values (pleasant gradients) */
+.tile-v2 { background: linear-gradient(180deg,#f6f4ff,#e8f0ff); color:#1b2430; }
+.tile-v4 { background: linear-gradient(180deg,#fff4e6,#ffe8cc); color:#1b2430; }
+.tile-v8 { background: linear-gradient(180deg,#ffd6a5,#ffb37a); color:#071226; }
+.tile-v16 { background: linear-gradient(180deg,#ffadad,#ff8a8a); color:#071226; }
+.tile-v32 { background: linear-gradient(180deg,#ffc6ff,#ffa1f3); color:#071226; }
+.tile-v64 { background: linear-gradient(180deg,#c7f9cc,#98f1a8); color:#071226; }
+.tile-v128 { background: linear-gradient(180deg,#cbeafe,#9ad4ff); color:#071226; font-size:16px; }
+.tile-v256 { background: linear-gradient(180deg,#ffd6a5,#ffb37a); color:#071226; font-size:16px; }
+.tile-v512 { background: linear-gradient(180deg,#ffd6a5,#ffb37a); color:#071226; font-size:14px; }
+.tile-v1024, .tile-v2048 { background: linear-gradient(180deg,#fff8b5,#ffe58a); color:#071226; font-size:14px; }
+
+/* controls */
+.g-controls { display:flex; gap:8px; justify-content:center; width:100%; }
+.g-btn { background: rgba(255,255,255,0.04); border: none; padding:8px 12px; border-radius:10px; color:#fff; font-weight:700; }
+.g-btn.primary { background: linear-gradient(135deg,#6de5ff,#9affd0); color:#071226; }
+
+/* overlay for game over */
+.g-overlay {
+  position:absolute;
+  left:0; right:0; top:0; bottom:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(6, 7, 11, 0.55);
+  border-radius: 16px;
+}
+.g-overlay-card {
+  background: linear-gradient(180deg,#0f1724,#071026);
+  padding: 18px;
+  border-radius: 12px;
+  text-align:center;
+  color:#eef7ff;
+  width: min(80%, 320px);
+}
+.g-overlay-actions { display:flex; gap:10px; justify-content:center; margin-top:12px; }
+
+/* Responsive small tweaks */
+@media (max-width: 420px) {
+  .g-board { width: min(92vw, 360px); aspect-ratio: 1/1; }
+  .tile-inner { font-size: 18px; }
+}

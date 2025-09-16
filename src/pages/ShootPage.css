@@ -1,0 +1,108 @@
+/* src/pages/ShootPage.css */
+
+.shoot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#000011, #001133);
+  color: #e6f7ff;
+  font-family: sans-serif;
+}
+
+.game-canvas {
+  flex-grow: 1; /* Make canvas fill available space */
+  touch-action: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hud {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 40;
+}
+
+.big-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e6f7ff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mobile-controls {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.mobile-controls .fire-btn {
+  pointer-events: auto;
+}
+
+.left-joy {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joy-inner {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(136, 240, 255, 0.12);
+}
+
+.fire-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff6b6b, #ff9fbf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 28px;
+  color: white;
+  user-select: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.panel {
+  background: rgba(10, 20, 40, 0.8);
+  padding: 24px;
+  border-radius: 14px;
+  color: #e6f7ff;
+  text-align: center;
+  max-width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

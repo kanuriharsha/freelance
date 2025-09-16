@@ -1,0 +1,78 @@
+/* Global app shell to force a phone-like viewport inside desktop */
+.app-shell {
+  width: 100vw;  /* CHANGE: Fill the entire screen width */
+  height: 100vh; /* CHANGE: Fill the entire screen height */
+  padding: 0;    /* CHANGE: Remove the space around the edges */
+  box-sizing: border-box;
+  
+  /* The rest can stay the same for the background effect */
+  background: radial-gradient(ellipse at center, #061021 0%, #061826 60%, #071226 100%);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* The "phone" frame */
+.mobile-frame {
+  width: 100%;   /* CHANGE: Fill the parent container */
+  height: 100%;  /* CHANGE: Fill the parent container */
+  max-width: 100%;
+  border-radius: 0; /* CHANGE: Remove rounded corners for a true full-screen look */
+  box-shadow: none;   /* CHANGE: Remove the shadow */
+
+  /* These properties are still needed to structure the app's content */
+  background: linear-gradient(180deg, rgba(16,24,32,0.95), rgba(10,18,26,0.95));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+/* top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.app-left { display:flex; align-items:center; gap:10px;}
+.app-badge {
+  width:40px; height:40px; border-radius: 8px; background: linear-gradient(135deg,#ff9a52,#ffd46b); display:flex; align-items:center; justify-content:center; color:#071226; font-weight:700;
+}
+.app-name { color:#e6eef8; font-weight:700; font-size:16px; }
+.score-pill { background: rgba(255,255,255,0.03); padding:8px 12px; border-radius: 999px; font-weight:600; font-size:14px; }
+
+/* tiles */
+.tiles-area {
+  width: 90%;
+  padding: 18px; /* This is the value to change */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+  overflow-y: auto;
+}
+.game-block {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.02);
+  padding: 12px;
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  cursor: pointer;
+  color: #e9f1fb;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.game-block:active { transform: scale(.995); }
+.game-thumb { width: 60px;
+  height: 60px; border-radius:12px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg,#0f1d2b,#122233); box-shadow: inset 0 -6px 12px rgba(0,0,0,0.3); }
+.game-thumb-inner { color:#99c1d9; font-weight:700; font-size:18px; opacity:0.9; }
+.game-info { text-align:left; }
+.game-title { font-size:15px; font-weight:700; }
+.game-sub { font-size:12px; color: rgba(255,255,255,0.7); margin-top:4px; }
+
+/* footer */
+.app-footer { font-size:12px; padding:14px; text-align:center; color:rgba(255,255,255,0.6); border-top:1px solid rgba(255,255,255,0.02); }
+
+/* Fullscreen snake overlay styles are in SnakePage.css (below) */
